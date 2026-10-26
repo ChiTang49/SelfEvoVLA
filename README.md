@@ -87,16 +87,6 @@ GitHub Pages：<https://chitang49.github.io/SelfEvoVLA/>
 python -m http.server 8000
 ```
 
-## 局限性
-
-- 每个任务一个策略训练 seed，不声称跨 seed 稳定性。
-- 结果价值模型是 Q 代理，不是精确 Bellman Q 或模型预测规划。
-- 规划在三任务留出状态上均未优于 RIPT；回流单独使用未稳定改善。
-- Task 5 使用两阶段恢复训练，不宣称优化器状态无缝连续。
-- 不包含 RoboTwin、真机、LIBERO-90 全量复现或 SOTA 声明。
-
 ## 许可证
 
 MIT License，见 `LICENSE`。
-
-上游：[RIPT-VLA](https://github.com/Ariostgx/ript-vla) 和 [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO)。本项目不代表上游作者认可本项目的实现或结果。
