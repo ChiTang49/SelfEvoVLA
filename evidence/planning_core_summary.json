@@ -1,0 +1,461 @@
+{
+  "scope": "Main LIBERO-Long task; one policy training seed. Planning evaluations have 50 states overall and 10 value-heldout states; they are independent of the earlier E1-E3 formal runs.",
+  "value_metrics": {
+    "train": {
+      "auroc": 0.999884126984127,
+      "auprc": 0.9999574007865655,
+      "brier": 0.008939767465183686,
+      "ece_10bin": 0.029295913050564892,
+      "positive_count": 3150,
+      "negative_count": 1200,
+      "positive_fraction": 0.7241379310344828
+    },
+    "val": {
+      "auroc": 0.8809944444444444,
+      "auprc": 0.9232762923670305,
+      "brier": 0.1842895877979347,
+      "ece_10bin": 0.15828974572404203,
+      "positive_count": 900,
+      "negative_count": 600,
+      "positive_fraction": 0.6
+    },
+    "test": {
+      "auroc": 0.7892711111111111,
+      "auprc": 0.7811072993767798,
+      "brier": 0.2360257987959671,
+      "ece_10bin": 0.19913788954075,
+      "positive_count": 750,
+      "negative_count": 750,
+      "positive_fraction": 0.5
+    }
+  },
+  "value_data": {
+    "train": {
+      "sample_count": 4350,
+      "state_count": 30,
+      "state_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "state_set_sha256": "394a42f05d4ef71e6c3270cc4fb38075f42683eb24255ab033cbf89ecccf5143",
+      "positive_samples": 3150,
+      "negative_samples": 1200
+    },
+    "val": {
+      "sample_count": 1500,
+      "state_count": 10,
+      "state_indices": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "state_set_sha256": "3a32fcd58ade8a9195e5b97930c73b20ff7a989d5ac1d009d257ab8d81261314",
+      "positive_samples": 900,
+      "negative_samples": 600
+    },
+    "test": {
+      "sample_count": 1500,
+      "state_count": 10,
+      "state_indices": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "state_set_sha256": "a69ec2e5d8c02723a5bb5a8fa4f68fd0e1e17123cc105b932b6315314e8ac7e0",
+      "positive_samples": 750,
+      "negative_samples": 750
+    }
+  },
+  "experiments": {
+    "E9-sft-k1": {
+      "experiment_id": "E9-sft-k1",
+      "overall": {
+        "episodes": 50,
+        "successes": 31,
+        "success_rate": 0.62,
+        "wilson_95": [
+          0.4815019502239357,
+          0.7413740415742278
+        ],
+        "mean_episode_steps": 439.04
+      },
+      "state_strata": {
+        "value_train_states_0_29": {
+          "episodes": 30,
+          "successes": 18,
+          "success_rate": 0.6,
+          "wilson_95": [
+            0.42320052498273836,
+            0.7540960567391659
+          ],
+          "mean_episode_steps": 440.26666666666665
+        },
+        "value_validation_states_30_39": {
+          "episodes": 10,
+          "successes": 6,
+          "success_rate": 0.6,
+          "wilson_95": [
+            0.3126695474501864,
+            0.8318224187964902
+          ],
+          "mean_episode_steps": 442.7
+        },
+        "value_heldout_states_40_49": {
+          "episodes": 10,
+          "successes": 7,
+          "success_rate": 0.7,
+          "wilson_95": [
+            0.39677321997956516,
+            0.892210712513788
+          ],
+          "mean_episode_steps": 431.7
+        }
+      },
+      "planning": {
+        "policy_inference_calls": 2756,
+        "num_candidates": 1,
+        "uses_value_model": false,
+        "mean_unique_candidate_fraction": 1.0,
+        "mean_pairwise_l1": 0.0,
+        "all_actions_finite": true,
+        "mean_inference_seconds": 0.07681224937314175,
+        "max_memory_allocated_bytes": 172542464,
+        "mean_within_context_score_std": 0.0
+      },
+      "policy": "sft",
+      "num_candidates": 1
+    },
+    "E9-sft-planning-k4": {
+      "experiment_id": "E9-sft-planning-k4",
+      "overall": {
+        "episodes": 50,
+        "successes": 30,
+        "success_rate": 0.6,
+        "wilson_95": [
+          0.4618118910275937,
+          0.7239181021375425
+        ],
+        "mean_episode_steps": 431.8
+      },
+      "state_strata": {
+        "value_train_states_0_29": {
+          "episodes": 30,
+          "successes": 20,
+          "success_rate": 0.6666666666666666,
+          "wilson_95": [
+            0.48779725813830266,
+            0.807697044731538
+          ],
+          "mean_episode_steps": 408.3666666666667
+        },
+        "value_validation_states_30_39": {
+          "episodes": 10,
+          "successes": 6,
+          "success_rate": 0.6,
+          "wilson_95": [
+            0.3126695474501864,
+            0.8318224187964902
+          ],
+          "mean_episode_steps": 444.6
+        },
+        "value_heldout_states_40_49": {
+          "episodes": 10,
+          "successes": 4,
+          "success_rate": 0.4,
+          "wilson_95": [
+            0.16817758120350967,
+            0.6873304525498135
+          ],
+          "mean_episode_steps": 489.3
+        }
+      },
+      "planning": {
+        "policy_inference_calls": 2715,
+        "num_candidates": 4,
+        "uses_value_model": true,
+        "mean_unique_candidate_fraction": 0.9998158379373849,
+        "mean_pairwise_l1": 0.03198539752077524,
+        "all_actions_finite": true,
+        "mean_inference_seconds": 0.08024312695265365,
+        "max_memory_allocated_bytes": 173868032,
+        "mean_within_context_score_std": 1.2239322772163936
+      },
+      "policy": "sft",
+      "num_candidates": 4
+    },
+    "E9-sft-planning-k8": {
+      "experiment_id": "E9-sft-planning-k8",
+      "overall": {
+        "episodes": 50,
+        "successes": 33,
+        "success_rate": 0.66,
+        "wilson_95": [
+          0.5215356854148285,
+          0.7756323036493895
+        ],
+        "mean_episode_steps": 424.4
+      },
+      "state_strata": {
+        "value_train_states_0_29": {
+          "episodes": 30,
+          "successes": 25,
+          "success_rate": 0.8333333333333334,
+          "wilson_95": [
+            0.6643529481431982,
+            0.9266356575964831
+          ],
+          "mean_episode_steps": 373.3
+        },
+        "value_validation_states_30_39": {
+          "episodes": 10,
+          "successes": 4,
+          "success_rate": 0.4,
+          "wilson_95": [
+            0.16817758120350967,
+            0.6873304525498135
+          ],
+          "mean_episode_steps": 501.7
+        },
+        "value_heldout_states_40_49": {
+          "episodes": 10,
+          "successes": 4,
+          "success_rate": 0.4,
+          "wilson_95": [
+            0.16817758120350967,
+            0.6873304525498135
+          ],
+          "mean_episode_steps": 500.4
+        }
+      },
+      "planning": {
+        "policy_inference_calls": 2666,
+        "num_candidates": 8,
+        "uses_value_model": true,
+        "mean_unique_candidate_fraction": 0.999671792948237,
+        "mean_pairwise_l1": 0.03521785519767199,
+        "all_actions_finite": true,
+        "mean_inference_seconds": 0.0848893428581857,
+        "max_memory_allocated_bytes": 175033344,
+        "mean_within_context_score_std": 1.3445406051032238
+      },
+      "policy": "sft",
+      "num_candidates": 8
+    },
+    "E9-e3-k1": {
+      "experiment_id": "E9-e3-k1",
+      "overall": {
+        "episodes": 50,
+        "successes": 31,
+        "success_rate": 0.62,
+        "wilson_95": [
+          0.4815019502239357,
+          0.7413740415742278
+        ],
+        "mean_episode_steps": 430.32
+      },
+      "state_strata": {
+        "value_train_states_0_29": {
+          "episodes": 30,
+          "successes": 18,
+          "success_rate": 0.6,
+          "wilson_95": [
+            0.42320052498273836,
+            0.7540960567391659
+          ],
+          "mean_episode_steps": 439.96666666666664
+        },
+        "value_validation_states_30_39": {
+          "episodes": 10,
+          "successes": 7,
+          "success_rate": 0.7,
+          "wilson_95": [
+            0.39677321997956516,
+            0.892210712513788
+          ],
+          "mean_episode_steps": 394.2
+        },
+        "value_heldout_states_40_49": {
+          "episodes": 10,
+          "successes": 6,
+          "success_rate": 0.6,
+          "wilson_95": [
+            0.3126695474501864,
+            0.8318224187964902
+          ],
+          "mean_episode_steps": 437.5
+        }
+      },
+      "planning": {
+        "policy_inference_calls": 2706,
+        "num_candidates": 1,
+        "uses_value_model": false,
+        "mean_unique_candidate_fraction": 1.0,
+        "mean_pairwise_l1": 0.0,
+        "all_actions_finite": true,
+        "mean_inference_seconds": 0.08182597397472118,
+        "max_memory_allocated_bytes": 172542464,
+        "mean_within_context_score_std": 0.0
+      },
+      "policy": "e3",
+      "num_candidates": 1
+    },
+    "E9-e3-planning-k4": {
+      "experiment_id": "E9-e3-planning-k4",
+      "overall": {
+        "episodes": 50,
+        "successes": 31,
+        "success_rate": 0.62,
+        "wilson_95": [
+          0.4815019502239357,
+          0.7413740415742278
+        ],
+        "mean_episode_steps": 432.12
+      },
+      "state_strata": {
+        "value_train_states_0_29": {
+          "episodes": 30,
+          "successes": 21,
+          "success_rate": 0.7,
+          "wilson_95": [
+            0.5212387898833981,
+            0.8333543735604105
+          ],
+          "mean_episode_steps": 417.6666666666667
+        },
+        "value_validation_states_30_39": {
+          "episodes": 10,
+          "successes": 5,
+          "success_rate": 0.5,
+          "wilson_95": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "mean_episode_steps": 455.2
+        },
+        "value_heldout_states_40_49": {
+          "episodes": 10,
+          "successes": 5,
+          "success_rate": 0.5,
+          "wilson_95": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "mean_episode_steps": 452.4
+        }
+      },
+      "planning": {
+        "policy_inference_calls": 2712,
+        "num_candidates": 4,
+        "uses_value_model": true,
+        "mean_unique_candidate_fraction": 0.9997234513274337,
+        "mean_pairwise_l1": 0.04202045818248552,
+        "all_actions_finite": true,
+        "mean_inference_seconds": 0.09099172688484918,
+        "max_memory_allocated_bytes": 173868032,
+        "mean_within_context_score_std": 1.2177070167135045
+      },
+      "policy": "e3",
+      "num_candidates": 4
+    },
+    "E9-e3-planning-k8": {
+      "experiment_id": "E9-e3-planning-k8",
+      "overall": {
+        "episodes": 50,
+        "successes": 31,
+        "success_rate": 0.62,
+        "wilson_95": [
+          0.4815019502239357,
+          0.7413740415742278
+        ],
+        "mean_episode_steps": 421.36
+      },
+      "state_strata": {
+        "value_train_states_0_29": {
+          "episodes": 30,
+          "successes": 20,
+          "success_rate": 0.6666666666666666,
+          "wilson_95": [
+            0.48779725813830266,
+            0.807697044731538
+          ],
+          "mean_episode_steps": 410.43333333333334
+        },
+        "value_validation_states_30_39": {
+          "episodes": 10,
+          "successes": 6,
+          "success_rate": 0.6,
+          "wilson_95": [
+            0.3126695474501864,
+            0.8318224187964902
+          ],
+          "mean_episode_steps": 414.4
+        },
+        "value_heldout_states_40_49": {
+          "episodes": 10,
+          "successes": 5,
+          "success_rate": 0.5,
+          "wilson_95": [
+            0.23658959361548731,
+            0.7634104063845126
+          ],
+          "mean_episode_steps": 461.1
+        }
+      },
+      "planning": {
+        "policy_inference_calls": 2647,
+        "num_candidates": 8,
+        "uses_value_model": true,
+        "mean_unique_candidate_fraction": 0.9997166603702304,
+        "mean_pairwise_l1": 0.04870322334759914,
+        "all_actions_finite": true,
+        "mean_inference_seconds": 0.08966321023803839,
+        "max_memory_allocated_bytes": 175033344,
+        "mean_within_context_score_std": 1.3890761181235847
+      },
+      "policy": "e3",
+      "num_candidates": 8
+    }
+  }
+}

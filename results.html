@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="三任务结果、留出状态、两轮回流、K 消融和训练曲线集中展示，便于快速核对数字与结论。">
+  <title>实验结果：有效提升与无效模块都如实呈现</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a><a href="index.html" class="">概览</a><a href="method.html" class="">方法</a><a href="results.html" class="active">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>实验结果：有效提升与无效模块都如实呈现</h1><p class="lead">三任务结果、留出状态、两轮回流、K 消融和训练曲线集中展示，便于快速核对数字与结论。</p></div></div>
+<main class="wrap">
+<section><div class="section-head"><div class="kicker">01 · 三任务主结果</div><h2>RIPT 宏平均从 61.3% 提升至 74.7%</h2><p>每个任务使用一个策略训练 seed 和 50 个固定初始状态。主任务采用本轮 K=1 受控口径，与早期单任务历史评估分开。</p></div><div class="table-wrap"><table><thead><tr><th>任务</th><th>SFT</th><th>有界 RIPT</th><th>SFT＋规划</th><th>RIPT＋规划</th></tr></thead><tbody><tr><td>主任务</td><td>31/50（62.0%）</td><td>31/50（62.0%）</td><td>30/50（60.0%）</td><td>31/50（62.0%）</td></tr><tr><td>任务 5</td><td>33/50（66.0%）</td><td>37/50（74.0%）</td><td>28/50（56.0%）</td><td>39/50（78.0%）</td></tr><tr><td>任务 6</td><td>28/50（56.0%）</td><td>44/50（88.0%）</td><td>25/50（50.0%）</td><td>37/50（74.0%）</td></tr><tr class="highlight"><td>宏平均</td><td><strong>61.3%</strong></td><td><strong>74.7%</strong></td><td><strong>55.3%</strong></td><td><strong>71.3%</strong></td></tr></tbody></table></div>
+<figure class="figure"><img src="assets/multitask_results.png" alt="三任务全量、留出状态和价值指标图"></figure></section>
+<section><div class="section-head"><div class="kicker">02 · 留出状态</div><h2>规划的收益没有迁移到价值留出状态</h2><p>最后 10 个初始状态不参与价值模型训练或回流。三个任务的 RIPT＋Planning 均低于对应 RIPT，不能选择性使用 Task 5 的全量 78% 作为普遍结论。</p></div><div class="table-wrap"><table><thead><tr><th>任务</th><th>SFT</th><th>有界 RIPT</th><th>SFT＋规划</th><th>RIPT＋规划</th></tr></thead><tbody><tr><td>主任务</td><td>7/10（70.0%）</td><td>6/10（60.0%）</td><td>4/10（40.0%）</td><td>5/10（50.0%）</td></tr><tr><td>任务 5</td><td>5/10（50.0%）</td><td>7/10（70.0%）</td><td>3/10（30.0%）</td><td>5/10（50.0%）</td></tr><tr><td>任务 6</td><td>8/10（80.0%）</td><td>10/10（100.0%）</td><td>2/10（20.0%）</td><td>8/10（80.0%）</td></tr><tr class="highlight"><td>宏平均</td><td><strong>66.7%</strong></td><td><strong>76.7%</strong></td><td><strong>30.0%</strong></td><td><strong>60.0%</strong></td></tr></tbody></table></div></section>
+<section><div class="section-head"><div class="kicker">03 · 一轮经验回流</div><h2>组合方法改善，回流单独使用并未改善</h2><p>回流使用 21 条仿真确认成功的规划轨迹、843 个动作块，微调 2 个 epoch。下表同时给出两个评估 seed 和留出均值。</p></div>
+<div class="table-wrap"><table><thead><tr><th>模型与方式</th><th>seed 0</th><th>seed 1</th><th>全量均值</th><th>留出均值</th></tr></thead><tbody><tr><td>原 E3，K=1</td><td>62%</td><td>72%</td><td><strong>67.0%</strong></td><td>65.0%</td></tr><tr><td>回流，K=1</td><td>68%</td><td>58%</td><td><strong>63.0%</strong></td><td>55.0%</td></tr><tr><td>原 E3＋规划，K=4</td><td>62%</td><td>70%</td><td><strong>66.0%</strong></td><td>55.0%</td></tr><tr><td>回流＋规划，K=4</td><td>70%</td><td>74%</td><td><strong>72.0%</strong></td><td>75.0%</td></tr></tbody></table></div>
+<figure class="figure"><img src="assets/feedback_results.png" alt="原 E3 与回流模型在两个评估 seed 下的结果"></figure></section>
+<section><div class="section-head"><div class="kicker">04 · 价值模型与规划消融</div><h2>排序能力存在，但不等于在线规划收益</h2><p>三个任务专属价值模型均有可测量的留出排序能力；K=1/4/8 对照用于分析候选数量和实际执行收益。</p></div>
+<div class="grid two"><div><div class="table-wrap"><table><thead><tr><th>任务</th><th>AUROC</th><th>AUPRC</th><th>Brier</th></tr></thead><tbody><tr><td>主任务</td><td>0.7893</td><td>0.7811</td><td>0.2360</td></tr><tr><td>任务 5</td><td>0.9094</td><td>0.8846</td><td>0.1359</td></tr><tr><td>任务 6</td><td>0.9519</td><td>0.9653</td><td>0.0893</td></tr></tbody></table></div></div><div><figure class="figure"><img src="assets/planning_results.png" alt="K=1、4、8 全量、留出结果和推理耗时"></figure></div></div>
+<figure class="figure"><img src="assets/candidate_scores.png" alt="前 24 次重规划的候选评分与选择"></figure></section>
+<section><div class="section-head"><div class="kicker">05 · 训练过程</div><h2>训练曲线与采样量同时公开</h2><p>训练期 rollout 成功率只用于观察过程，不替代最终独立评估。蓝色为接受轨迹，橙色为动态采样丢弃轨迹。</p></div>
+<div class="grid three">
+  <figure class="figure"><img src="evidence/E3-main-bript-seed00/training_curve.png" alt="主任务 RIPT 训练曲线"><figcaption>主任务：15 轮 RIPT</figcaption></figure>
+  <figure class="figure"><img src="evidence/E11-task5-bript-resume4-v2/training_curve.png" alt="Task 5 恢复段训练曲线"><figcaption>Task 5：原 5 轮＋恢复 10 轮中的恢复段</figcaption></figure>
+  <figure class="figure"><img src="evidence/E11-task6-bript-final-seed00/training_curve.png" alt="Task 6 训练曲线"><figcaption>Task 6：15 轮 RIPT</figcaption></figure>
+</div></section>
+<section><div class="section-head"><div class="kicker">06 · 如何理解这些数字</div><h2>结果可以支持什么，不能支持什么</h2></div>
+<div class="grid three">
+  <div class="card"><h3>可以支持</h3><p>单卡完成真实 RIPT；两个扩展任务明显提升；价值模型具有留出排序能力；回流与规划组合在两个评估 seed 上呈正向。</p></div>
+  <div class="card"><h3>需要保留</h3><p>规划在三任务留出状态均未改善；回流单独使用退化；评估存在波动；Task 5 为两阶段恢复训练。</p></div>
+  <div class="card"><h3>不能外推</h3><p>不能宣称跨训练 seed 稳定提升、完整 Q-Planning 复现、SOTA、RoboTwin 或真机效果。</p></div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">基于 RIPT-VLA、QueST 与 LIBERO。实验过程、正负结果和适用边界均在页面中呈现。</div></footer>
+</body>
+</html>

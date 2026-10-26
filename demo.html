@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="用大尺寸视频比较 SFT、RLOO、RIPT、规划与回流，同时展示改善、共同失败和退化案例。">
+  <title>视频演示：同一初始状态下的真实行为变化</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a><a href="index.html" class="">概览</a><a href="method.html" class="">方法</a><a href="results.html" class="">实验结果</a><a href="demo.html" class="active">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>视频演示：同一初始状态下的真实行为变化</h1><p class="lead">用大尺寸视频比较 SFT、RLOO、RIPT、规划与回流，同时展示改善、共同失败和退化案例。</p></div></div>
+<main class="wrap">
+<section><div class="section-head"><div class="kicker">01 · 三方法同步对比</div><h2>相同初始状态，不只保留成功案例</h2><p>SFT、RLOO 和有界 RIPT 同步播放。75 秒内容包含共同失败、训练后改善和训练后退化；视频只用于定性分析，不替代正式 50 状态评估。</p></div>
+<div class="video-shell"><h3>SFT / RLOO / 有界 RIPT</h3><video controls preload="metadata" poster="assets/demo_cover.png"><source src="assets/ript_comparison_demo.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><p>初始状态 2：共同失败；初始状态 4：两种自训方法改善；初始状态 0：SFT 成功但自训方法失败。</p></div></section>
+<section><div class="section-head"><div class="kicker">02 · 训练与自进化案例</div><h2>把 checkpoint 和行为变化对应起来</h2><p>每个案例均标注实际初始状态和环境步数。随机策略在其他 rollout 中可能表现不同，因此不将精选视频当作稳定性证明。</p></div>
+<div class="video-shell"><h3>训练迭代：第 5 轮失败 → 第 15 轮成功</h3><video controls preload="metadata" poster="assets/evolution_checkpoint_cover.png"><source src="assets/evolution_checkpoint.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><p>主任务、初始状态 47：RIPT 第 5 轮在 600 步失败，第 15 轮在 280 步成功。</p></div>
+<div class="video-shell"><h3>回流＋规划：原 E3 失败 → 组合方法成功</h3><video controls preload="metadata" poster="assets/evolution_feedback_cover.png"><source src="assets/evolution_feedback.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><p>主任务、初始状态 7：原 E3 在 600 步失败，回流＋K=4 规划在 359 步成功。</p></div>
+<div class="video-shell"><h3>跨任务：SFT 失败 → RIPT 成功</h3><video controls preload="metadata" poster="assets/evolution_new_tasks_cover.png"><source src="assets/evolution_new_tasks.mp4" type="video/mp4">当前浏览器无法播放此视频。</video><p>Task 5 初始状态 16、Task 6 初始状态 2：SFT 均在 600 步失败，RIPT 分别在 257 和 243 步成功。</p></div></section>
+<section><div class="section-head"><div class="kicker">03 · 失败案例分析</div><h2>失败不是统一的一类问题</h2><p>标签来自单视角视频的人工观察，置信度为中，不冒充仿真器自动真值。没有足够证据时不强行归类。</p></div>
+<div class="table-wrap"><table><thead><tr><th>方法</th><th>未抓取</th><th>放置失败</th><th>中途停滞</th><th>合计失败</th></tr></thead><tbody>
+<tr><td>SFT</td><td>0</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>RLOO</td><td>1</td><td>2</td><td>0</td><td>3</td></tr>
+<tr><td>有界 RIPT</td><td>0</td><td>2</td><td>2</td><td>4</td></tr>
+</tbody></table></div>
+<div class="grid three">
+  <div class="card"><h3>共同失败：状态 2</h3><p>三种方法都达到 600 步上限，提示存在共同困难状态，不能只看平均成功率。</p></div>
+  <div class="card"><h3>训练后改善：状态 4</h3><p>SFT 失败，RLOO 和有界 RIPT 成功，说明策略更新可改变具体行为。</p></div>
+  <div class="card"><h3>训练后退化：状态 0 和 3</h3><p>SFT 成功而至少一种自训方法失败，这些案例同样保留在页面中。</p></div>
+</div></section>
+<section><div class="section-head"><div class="kicker">04 · 案例记录</div><h2>28 条生成案例完整呈现</h2><p>除页面精选视频外，同时保留未改善和退化记录。完整逐 episode 数据还可在实验数据页查看。</p></div><div class="table-wrap table-scroll"><table><thead><tr><th>实验编号</th><th>初始状态</th><th>结果</th><th>环境步数</th></tr></thead><tbody><tr><td>E12-video-early-s26</td><td>26</td><td><span class="good">成功</span></td><td>290</td></tr><tr><td>E12-video-early-s47</td><td>47</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-early-s7</td><td>7</td><td><span class="good">成功</span></td><td>275</td></tr><tr><td>E12-video-feedback-planning-s26</td><td>26</td><td><span class="good">成功</span></td><td>264</td></tr><tr><td>E12-video-feedback-planning-s47</td><td>47</td><td><span class="good">成功</span></td><td>276</td></tr><tr><td>E12-video-feedback-planning-s7</td><td>7</td><td><span class="good">成功</span></td><td>359</td></tr><tr><td>E12-video-final-s26</td><td>26</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-final-s47</td><td>47</td><td><span class="good">成功</span></td><td>280</td></tr><tr><td>E12-video-final-s7</td><td>7</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-original-planning-s26</td><td>26</td><td><span class="good">成功</span></td><td>257</td></tr><tr><td>E12-video-original-planning-s47</td><td>47</td><td><span class="good">成功</span></td><td>290</td></tr><tr><td>E12-video-original-planning-s7</td><td>7</td><td><span class="good">成功</span></td><td>464</td></tr><tr><td>E12-video-task5-ript-s11</td><td>11</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task5-ript-s16</td><td>16</td><td><span class="good">成功</span></td><td>257</td></tr><tr><td>E12-video-task5-ript-s25</td><td>25</td><td><span class="good">成功</span></td><td>275</td></tr><tr><td>E12-video-task5-ript-s4</td><td>4</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task5-sft-s11</td><td>11</td><td><span class="good">成功</span></td><td>307</td></tr><tr><td>E12-video-task5-sft-s16</td><td>16</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task5-sft-s25</td><td>25</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task5-sft-s4</td><td>4</td><td><span class="good">成功</span></td><td>518</td></tr><tr><td>E12-video-task6-ript-s0</td><td>0</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task6-ript-s2</td><td>2</td><td><span class="good">成功</span></td><td>243</td></tr><tr><td>E12-video-task6-ript-s4</td><td>4</td><td><span class="good">成功</span></td><td>208</td></tr><tr><td>E12-video-task6-ript-s5</td><td>5</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task6-sft-s0</td><td>0</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task6-sft-s2</td><td>2</td><td><span class="bad">失败</span></td><td>600</td></tr><tr><td>E12-video-task6-sft-s4</td><td>4</td><td><span class="good">成功</span></td><td>274</td></tr><tr><td>E12-video-task6-sft-s5</td><td>5</td><td><span class="good">成功</span></td><td>344</td></tr></tbody></table></div></section>
+</main>
+<footer class="footer"><div class="wrap">基于 RIPT-VLA、QueST 与 LIBERO。实验过程、正负结果和适用边界均在页面中呈现。</div></footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="在单张 32GB GPU 上，完成 LIBERO 在线强化后训练、结果价值引导与验证经验回流，并用三任务实验检验效果和边界。">
+  <title>自进化 VLA：从交互后训练到结果价值规划</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a><a href="index.html" class="active">概览</a><a href="method.html" class="">方法</a><a href="results.html" class="">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>自进化 VLA：从交互后训练到结果价值规划</h1><p class="lead">在单张 32GB GPU 上，完成 LIBERO 在线强化后训练、结果价值引导与验证经验回流，并用三任务实验检验效果和边界。</p></div></div>
+<main class="wrap">
+<section><div class="section-head"><div class="kicker">01 · 项目要解决的问题</div><h2>让 VLA 不只模仿示范，还能从交互结果中改进</h2><p>行为克隆只能从已有示范学习。这个项目关注三个更具体的问题：策略能否利用成功与失败轨迹继续训练，动态采样能否避免无上限重试，以及结果价值模型能否帮助推理时的动作选择。</p></div>
+<div class="grid three">
+  <div class="card"><h3>交互后训练</h3><p>从 SFT 策略出发，在 LIBERO 中采样多条轨迹，用任务奖励计算组内优势并执行 RLOO/PPO 更新。</p></div>
+  <div class="card"><h3>可控采样</h3><p>针对全成功或全失败轨迹组造成的零优势与重复采样，增加最大重试、预算耗尽保护和诊断日志。</p></div>
+  <div class="card"><h3>自进化闭环</h3><p>进一步学习任务专属结果价值模型，对候选动作块排序，并把仿真验证成功的经验用于一轮回流。</p></div>
+</div></section>
+<section><div class="section-head"><div class="kicker">02 · 技术路线</div><h2>训练时后训练、推理时候选规划、验证经验回流</h2><p>QueST 主干在价值学习阶段保持冻结。候选动作在真实观测上生成，未选候选不进入仿真器；回流只使用仿真确认成功的轨迹，并限制为一轮。</p></div>
+<figure class="figure"><img src="assets/self_evolving_pipeline.png" alt="SFT、RIPT、交互数据、结果价值、候选规划、执行验证与回流组成的闭环"></figure>
+<div class="button-row"><a class="button" href="method.html">查看方法与技术细节</a></div></section>
+<section><div class="section-head"><div class="kicker">03 · 核心实验结果</div><h2>真实训练得到的结果，也保留没有奏效的模块</h2><p>三个 LIBERO-Long 任务均完成真实 RIPT 训练、50 状态独立评估、任务专属价值模型和规划对照。</p></div>
+<div class="grid four">
+  <div class="card emphasis"><div class="label">RIPT 三任务宏平均</div><div class="metric">74.7<small>%</small></div><p>SFT 为 61.3%，提高 13.3 个百分点。</p></div>
+  <div class="card emphasis"><div class="label">Task 6</div><div class="metric">88<small>%</small></div><p>SFT 为 56%，单训练 seed 提高 32 个百分点。</p></div>
+  <div class="card"><div class="label">回流＋规划</div><div class="metric">72<small>%</small></div><p>两个评估 seed 均值，原规划为 66%。</p></div>
+  <div class="card"><div class="label">价值模型</div><div class="metric">0.952<small>AUROC</small></div><p>三个任务留出 AUROC 为 0.789–0.952。</p></div>
+</div>
+<div class="note"><strong>需要同时看到的负结果：</strong>RIPT＋Planning 的三任务宏平均为 71.3%，低于 RIPT；三个任务的价值留出状态上，规划也均未改善。回流策略单独使用的两轮均值为 63%，低于原 E3 的 67%。</div>
+<div class="button-row"><a class="button" href="results.html">查看完整结果矩阵</a><a class="button secondary" href="demo.html">观看真实行为对比</a></div></section>
+<section><div class="section-head"><div class="kicker">04 · 可复现性</div><h2>不仅呈现成功率，也保留完整的实验数据链</h2></div>
+<div class="grid three">
+  <div class="card"><h3>真实训练与重载</h3><p>三个任务均接受 120 组、1,920 条有效训练轨迹；最终 checkpoint 均实际加载运行，而非只评估官方权重。</p></div>
+  <div class="card"><h3>受控比较</h3><p>固定任务、初始状态与评估协议，分别给出全量 50 状态和最后 10 个价值留出状态，避免混用不同口径。</p></div>
+  <div class="card"><h3>失败也可追溯</h3><p>保留共同失败和训练后退化；CSV、视频、图表与研究笔记均在页面中直接展示。</p></div>
+</div></section>
+<section><div class="section-head"><div class="kicker">05 · 页面导览</div><h2>从方法到实验数据</h2></div>
+<div class="toc">
+  <a href="method.html"><strong>方法</strong><span>先了解 RIPT、价值规划与回流如何连接</span></a>
+  <a href="results.html"><strong>实验结果</strong><span>再看三任务、留出状态和两轮评估数字</span></a>
+  <a href="demo.html"><strong>视频演示</strong><span>直观比较同一初始状态下的行为变化</span></a>
+  <a href="data.html"><strong>实验数据</strong><span>最后检查 CSV、失败案例和研究笔记</span></a>
+</div>
+<div class="note"><strong>结论边界：</strong>每个任务使用一个策略训练 seed，主任务回流另有两个评估 seed。结果不代表跨训练 seed 稳定性、完整论文复现、SOTA 或真机效果。结果价值模型是学习到的 Q 代理，不是精确 Bellman Q 函数。</div></section>
+</main>
+<footer class="footer"><div class="wrap">基于 RIPT-VLA、QueST 与 LIBERO。实验过程、正负结果和适用边界均在页面中呈现。</div></footer>
+</body>
+</html>

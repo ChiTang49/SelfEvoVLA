@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="CSV 与数据说明直接渲染在页面中，便于逐项核对方法、结果、失败类型和实验边界。">
+  <title>实验数据：轨迹、失败案例与可复现性</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a><a href="index.html" class="">概览</a><a href="method.html" class="">方法</a><a href="results.html" class="">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="active">实验数据</a></nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>实验数据：轨迹、失败案例与可复现性</h1><p class="lead">CSV 与数据说明直接渲染在页面中，便于逐项核对方法、结果、失败类型和实验边界。</p></div></div>
+<main class="wrap">
+<section><div class="section-head"><div class="kicker">01 · 逐 episode 数据</div><h2>24 条配对轨迹直接呈现在页面中</h2><p>三种方法各 8 条，包含成功、失败、环境步数、失败类型和观察依据。这里只用于定性分析，不用小样本重新排名。</p></div><div class="table-wrap table-scroll"><table><thead><tr><th>方法</th><th>初始状态</th><th>结果</th><th>环境步数</th><th>失败类型</th><th>观察依据</th></tr></thead><tbody><tr><td>SFT</td><td>0</td><td><span class="good">成功</span></td><td>286</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>SFT</td><td>1</td><td><span class="good">成功</span></td><td>508</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>SFT</td><td>2</td><td><span class="bad">失败</span></td><td>600</td><td>放置失败</td><td>可见目标物体搬运尝试但600步时仍未满足双物体入篮</td></tr><tr><td>SFT</td><td>3</td><td><span class="good">成功</span></td><td>386</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>SFT</td><td>4</td><td><span class="bad">失败</span></td><td>600</td><td>中途停滞</td><td>后段在左侧目标附近重复或小幅运动且未完成双物体入篮</td></tr><tr><td>SFT</td><td>5</td><td><span class="good">成功</span></td><td>382</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>SFT</td><td>6</td><td><span class="good">成功</span></td><td>339</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>SFT</td><td>7</td><td><span class="good">成功</span></td><td>370</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>RLOO</td><td>0</td><td><span class="bad">失败</span></td><td>600</td><td>未抓取</td><td>后段仍在左侧目标附近活动且未见稳定完成双物体搬运</td></tr><tr><td>RLOO</td><td>1</td><td><span class="good">成功</span></td><td>288</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>RLOO</td><td>2</td><td><span class="bad">失败</span></td><td>600</td><td>放置失败</td><td>可见目标物体搬运尝试但600步时仍未满足双物体入篮</td></tr><tr><td>RLOO</td><td>3</td><td><span class="good">成功</span></td><td>307</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>RLOO</td><td>4</td><td><span class="good">成功</span></td><td>322</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>RLOO</td><td>5</td><td><span class="good">成功</span></td><td>335</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>RLOO</td><td>6</td><td><span class="good">成功</span></td><td>281</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>RLOO</td><td>7</td><td><span class="bad">失败</span></td><td>600</td><td>放置失败</td><td>可见目标物体搬运尝试但600步时仍未满足双物体入篮</td></tr><tr><td>有界 RIPT</td><td>0</td><td><span class="bad">失败</span></td><td>600</td><td>放置失败</td><td>可见目标物体搬运尝试但600步时仍未满足双物体入篮</td></tr><tr><td>有界 RIPT</td><td>1</td><td><span class="good">成功</span></td><td>278</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>有界 RIPT</td><td>2</td><td><span class="bad">失败</span></td><td>600</td><td>放置失败</td><td>可见目标物体搬运尝试但600步时仍未满足双物体入篮</td></tr><tr><td>有界 RIPT</td><td>3</td><td><span class="bad">失败</span></td><td>600</td><td>中途停滞</td><td>后段在目标附近持续运动但未完成双物体入篮</td></tr><tr><td>有界 RIPT</td><td>4</td><td><span class="good">成功</span></td><td>441</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>有界 RIPT</td><td>5</td><td><span class="bad">失败</span></td><td>600</td><td>中途停滞</td><td>后段在目标附近持续运动但未完成双物体入篮</td></tr><tr><td>有界 RIPT</td><td>6</td><td><span class="good">成功</span></td><td>291</td><td>—</td><td>仿真器判定成功并提前终止</td></tr><tr><td>有界 RIPT</td><td>7</td><td><span class="good">成功</span></td><td>268</td><td>—</td><td>仿真器判定成功并提前终止</td></tr></tbody></table></div></section>
+<section id="datasets"><div class="section-head"><div class="kicker">02 · 数据组成</div><h2>训练、验证与留出数据各自承担什么作用</h2><p>数据只用于解释实验设置和结果，不包含原始执行日志或服务器环境信息。</p></div>
+<div class="grid three">
+  <div class="card"><h3>价值学习数据</h3><p>主任务使用 SFT 与 E3 各 50 条轨迹，共 7,350 个动作块；状态 0–29 训练、30–39 验证、40–49 留出。</p></div>
+  <div class="card"><h3>回流数据</h3><p>一轮回流使用 21 条仿真确认成功的规划轨迹、843 个动作块，仅来自训练状态范围。</p></div>
+  <div class="card"><h3>结果摘要</h3><p>三任务和回流结果由结构化摘要生成，保留全量与留出数字，不用精选视频替代正式评估。</p></div>
+</div></section>
+<section><div class="section-head"><div class="kicker">03 · 可复现性检查</div><h2>每个核心数字都能回到实验数据</h2></div>
+<div class="grid three">
+  <div class="card"><h3>模型与配置</h3><p>最终 RIPT、回流和价值模型 checkpoint 均保留，关键运行包含配置覆盖项、训练 seed 和 checkpoint 哈希。</p></div>
+  <div class="card"><h3>数据划分</h3><p>价值训练、验证和留出状态分离；回流仅使用训练状态内的成功轨迹，不将留出状态用于微调。</p></div>
+  <div class="card"><h3>科学结论边界</h3><p>保留规划退化和回流单独使用退化，明确这些方法在哪些条件下没有奏效。</p></div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap">基于 RIPT-VLA、QueST 与 LIBERO。实验过程、正负结果和适用边界均在页面中呈现。</div></footer>
+</body>
+</html>

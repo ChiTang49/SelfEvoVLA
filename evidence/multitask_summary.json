@@ -1,0 +1,401 @@
+{
+  "scope": "Three LIBERO-Long tasks, one policy training seed per task, evaluation seed 0. Main-task feedback is reported separately with two evaluation seeds.",
+  "tasks": {
+    "Main": {
+      "value_metrics": {
+        "train": {
+          "auroc": 0.999884126984127,
+          "auprc": 0.9999574007865655,
+          "brier": 0.008939767465183686,
+          "ece_10bin": 0.029295913050564892,
+          "positive_count": 3150,
+          "negative_count": 1200,
+          "positive_fraction": 0.7241379310344828
+        },
+        "val": {
+          "auroc": 0.8809944444444444,
+          "auprc": 0.9232762923670305,
+          "brier": 0.1842895877979347,
+          "ece_10bin": 0.15828974572404203,
+          "positive_count": 900,
+          "negative_count": 600,
+          "positive_fraction": 0.6
+        },
+        "test": {
+          "auroc": 0.7892711111111111,
+          "auprc": 0.7811072993767798,
+          "brier": 0.2360257987959671,
+          "ece_10bin": 0.19913788954075,
+          "positive_count": 750,
+          "negative_count": 750,
+          "positive_fraction": 0.5
+        }
+      },
+      "methods": {
+        "SFT": {
+          "experiment_id": "E9-sft-k1",
+          "overall": {
+            "episodes": 50,
+            "successes": 31,
+            "success_rate": 0.62,
+            "wilson_95": [
+              0.4815019502239357,
+              0.7413740415742278
+            ],
+            "mean_episode_steps": 439.04
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 7,
+            "success_rate": 0.7,
+            "wilson_95": [
+              0.39677321997956516,
+              0.892210712513788
+            ],
+            "mean_episode_steps": 431.7
+          }
+        },
+        "RIPT": {
+          "experiment_id": "E9-e3-k1",
+          "overall": {
+            "episodes": 50,
+            "successes": 31,
+            "success_rate": 0.62,
+            "wilson_95": [
+              0.4815019502239357,
+              0.7413740415742278
+            ],
+            "mean_episode_steps": 430.32
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 6,
+            "success_rate": 0.6,
+            "wilson_95": [
+              0.3126695474501864,
+              0.8318224187964902
+            ],
+            "mean_episode_steps": 437.5
+          }
+        },
+        "SFT+Plan": {
+          "experiment_id": "E9-sft-planning-k4",
+          "overall": {
+            "episodes": 50,
+            "successes": 30,
+            "success_rate": 0.6,
+            "wilson_95": [
+              0.4618118910275937,
+              0.7239181021375425
+            ],
+            "mean_episode_steps": 431.8
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 4,
+            "success_rate": 0.4,
+            "wilson_95": [
+              0.16817758120350967,
+              0.6873304525498135
+            ],
+            "mean_episode_steps": 489.3
+          }
+        },
+        "RIPT+Plan": {
+          "experiment_id": "E9-e3-planning-k4",
+          "overall": {
+            "episodes": 50,
+            "successes": 31,
+            "success_rate": 0.62,
+            "wilson_95": [
+              0.4815019502239357,
+              0.7413740415742278
+            ],
+            "mean_episode_steps": 432.12
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 5,
+            "success_rate": 0.5,
+            "wilson_95": [
+              0.23658959361548731,
+              0.7634104063845126
+            ],
+            "mean_episode_steps": 452.4
+          }
+        }
+      },
+      "macro_experiment_id": "E9-value-final-v2"
+    },
+    "Task 5": {
+      "value_metrics": {
+        "train": {
+          "auroc": 1.0,
+          "auprc": 1.0,
+          "brier": 0.001441928501492058,
+          "ece_10bin": 0.011440233185920702,
+          "positive_count": 2695,
+          "negative_count": 1125,
+          "positive_fraction": 0.7054973821989529
+        },
+        "val": {
+          "auroc": 0.9538185185185185,
+          "auprc": 0.9665289712900463,
+          "brier": 0.09549353244762729,
+          "ece_10bin": 0.08376105427264931,
+          "positive_count": 900,
+          "negative_count": 600,
+          "positive_fraction": 0.6
+        },
+        "test": {
+          "auroc": 0.909376,
+          "auprc": 0.8846106477765411,
+          "brier": 0.13588484829171665,
+          "ece_10bin": 0.11928861236994236,
+          "positive_count": 750,
+          "negative_count": 750,
+          "positive_fraction": 0.5
+        }
+      },
+      "methods": {
+        "SFT": {
+          "experiment_id": "E11-task5-sft",
+          "overall": {
+            "episodes": 50,
+            "successes": 33,
+            "success_rate": 0.66,
+            "wilson_95": [
+              0.5215356854148285,
+              0.7756323036493895
+            ],
+            "mean_episode_steps": 600.0
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 5,
+            "success_rate": 0.5,
+            "wilson_95": [
+              0.23658959361548731,
+              0.7634104063845126
+            ],
+            "mean_episode_steps": 600.0
+          }
+        },
+        "RIPT": {
+          "experiment_id": "E11-task5-bript-eval",
+          "overall": {
+            "episodes": 50,
+            "successes": 37,
+            "success_rate": 0.74,
+            "wilson_95": [
+              0.6044657801100008,
+              0.8412862034863262
+            ],
+            "mean_episode_steps": 519.2
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 7,
+            "success_rate": 0.7,
+            "wilson_95": [
+              0.39677321997956516,
+              0.892210712513788
+            ],
+            "mean_episode_steps": 600.0
+          }
+        },
+        "SFT+Plan": {
+          "experiment_id": "E11-task5-sft-planning-k4",
+          "overall": {
+            "episodes": 50,
+            "successes": 28,
+            "success_rate": 0.56,
+            "wilson_95": [
+              0.4230578680014353,
+              0.6883801278976466
+            ],
+            "mean_episode_steps": 429.06
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 3,
+            "success_rate": 0.3,
+            "wilson_95": [
+              0.10778928748621183,
+              0.6032267800204347
+            ],
+            "mean_episode_steps": 516.6
+          }
+        },
+        "RIPT+Plan": {
+          "experiment_id": "E11-task5-bript-planning-k4",
+          "overall": {
+            "episodes": 50,
+            "successes": 39,
+            "success_rate": 0.78,
+            "wilson_95": [
+              0.6475818431054045,
+              0.8724621377569771
+            ],
+            "mean_episode_steps": 353.02
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 5,
+            "success_rate": 0.5,
+            "wilson_95": [
+              0.23658959361548731,
+              0.7634104063845126
+            ],
+            "mean_episode_steps": 435.8
+          }
+        }
+      },
+      "macro_experiment_id": "E11-task5-value"
+    },
+    "Task 6": {
+      "value_metrics": {
+        "train": {
+          "auroc": 0.985095116927178,
+          "auprc": 0.9909941290670619,
+          "brier": 0.048869198754186195,
+          "ece_10bin": 0.04791080445322499,
+          "positive_count": 2620,
+          "negative_count": 1575,
+          "positive_fraction": 0.6245530393325387
+        },
+        "val": {
+          "auroc": 0.8596469298245614,
+          "auprc": 0.8454333540626947,
+          "brier": 0.15023513547076328,
+          "ece_10bin": 0.07846967534043323,
+          "positive_count": 760,
+          "negative_count": 600,
+          "positive_fraction": 0.5588235294117647
+        },
+        "test": {
+          "auroc": 0.951870525988173,
+          "auprc": 0.9652532249701032,
+          "brier": 0.08928741424985492,
+          "ece_10bin": 0.0457998473793203,
+          "positive_count": 765,
+          "negative_count": 525,
+          "positive_fraction": 0.5930232558139535
+        }
+      },
+      "methods": {
+        "SFT": {
+          "experiment_id": "E11-task6-sft",
+          "overall": {
+            "episodes": 50,
+            "successes": 28,
+            "success_rate": 0.56,
+            "wilson_95": [
+              0.4230578680014353,
+              0.6883801278976466
+            ],
+            "mean_episode_steps": 595.7
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 8,
+            "success_rate": 0.8,
+            "wilson_95": [
+              0.49015684672072335,
+              0.9433190520193067
+            ],
+            "mean_episode_steps": 578.5
+          }
+        },
+        "RIPT": {
+          "experiment_id": "E11-task6-bript-eval",
+          "overall": {
+            "episodes": 50,
+            "successes": 44,
+            "success_rate": 0.88,
+            "wilson_95": [
+              0.7619492111337642,
+              0.9438247628937535
+            ],
+            "mean_episode_steps": 492.6
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 10,
+            "success_rate": 1.0,
+            "wilson_95": [
+              0.7224598312333834,
+              1.0
+            ],
+            "mean_episode_steps": 428.0
+          }
+        },
+        "SFT+Plan": {
+          "experiment_id": "E11-task6-sft-planning-k4",
+          "overall": {
+            "episodes": 50,
+            "successes": 25,
+            "success_rate": 0.5,
+            "wilson_95": [
+              0.36644286412332855,
+              0.6335571358766714
+            ],
+            "mean_episode_steps": 437.42
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 2,
+            "success_rate": 0.2,
+            "wilson_95": [
+              0.056680947980693314,
+              0.5098431532792765
+            ],
+            "mean_episode_steps": 529.3
+          }
+        },
+        "RIPT+Plan": {
+          "experiment_id": "E11-task6-bript-planning-k4",
+          "overall": {
+            "episodes": 50,
+            "successes": 37,
+            "success_rate": 0.74,
+            "wilson_95": [
+              0.6044657801100008,
+              0.8412862034863262
+            ],
+            "mean_episode_steps": 354.88
+          },
+          "heldout": {
+            "episodes": 10,
+            "successes": 8,
+            "success_rate": 0.8,
+            "wilson_95": [
+              0.49015684672072335,
+              0.9433190520193067
+            ],
+            "mean_episode_steps": 325.4
+          }
+        }
+      },
+      "macro_experiment_id": "E11-task6-value"
+    }
+  },
+  "macro_average": {
+    "SFT": {
+      "overall_success_rate": 0.6133333333333334,
+      "heldout_success_rate": 0.6666666666666666
+    },
+    "RIPT": {
+      "overall_success_rate": 0.7466666666666666,
+      "heldout_success_rate": 0.7666666666666666
+    },
+    "SFT+Plan": {
+      "overall_success_rate": 0.5533333333333333,
+      "heldout_success_rate": 0.3
+    },
+    "RIPT+Plan": {
+      "overall_success_rate": 0.7133333333333333,
+      "heldout_success_rate": 0.6
+    }
+  }
+}
