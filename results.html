@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a><a href="index.html" class="">概览</a><a href="method.html" class="">方法</a><a href="results.html" class="active">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
-<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>实验结果：有效提升与无效模块都如实呈现</h1><p class="lead">三任务结果、留出状态、两轮回流、K 消融和训练曲线集中展示，便于快速核对数字与结论。</p></div></div>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">SelfEvoVLA</a><a href="index.html" class="">概览</a><a href="method.html" class="">方法</a><a href="results.html" class="active">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">SelfEvoVLA · 开源研究项目</div><h1>实验结果：有效提升与无效模块都如实呈现</h1><p class="lead">三任务结果、留出状态、两轮回流、K 消融和训练曲线集中展示，便于快速核对数字与结论。</p></div></div>
 <main class="wrap">
 <section><div class="section-head"><div class="kicker">01 · 三任务主结果</div><h2>RIPT 宏平均从 61.3% 提升至 74.7%</h2><p>每个任务使用一个策略训练 seed 和 50 个固定初始状态。主任务采用本轮 K=1 受控口径，与早期单任务历史评估分开。</p></div><div class="table-wrap"><table><thead><tr><th>任务</th><th>SFT</th><th>有界 RIPT</th><th>SFT＋规划</th><th>RIPT＋规划</th></tr></thead><tbody><tr><td>主任务</td><td>31/50（62.0%）</td><td>31/50（62.0%）</td><td>30/50（60.0%）</td><td>31/50（62.0%）</td></tr><tr><td>任务 5</td><td>33/50（66.0%）</td><td>37/50（74.0%）</td><td>28/50（56.0%）</td><td>39/50（78.0%）</td></tr><tr><td>任务 6</td><td>28/50（56.0%）</td><td>44/50（88.0%）</td><td>25/50（50.0%）</td><td>37/50（74.0%）</td></tr><tr class="highlight"><td>宏平均</td><td><strong>61.3%</strong></td><td><strong>74.7%</strong></td><td><strong>55.3%</strong></td><td><strong>71.3%</strong></td></tr></tbody></table></div>
 <figure class="figure"><img src="assets/multitask_results.png" alt="三任务全量、留出状态和价值指标图"></figure></section>

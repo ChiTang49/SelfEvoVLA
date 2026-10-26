@@ -2,4 +2,4 @@ paths:
   output_prefix: /absolute/path/to/outputs
   data_prefix: /absolute/path/to/datasets
 common:
-  wandb_project: vla-looplab
+  wandb_project: selfevovla

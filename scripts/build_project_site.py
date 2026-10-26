@@ -132,8 +132,8 @@ def page(filename, active, title, lead, content):
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a>{navigation}</nav></header>
-<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>{html.escape(title)}</h1><p class="lead">{html.escape(lead)}</p></div></div>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">SelfEvoVLA</a>{navigation}</nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">SelfEvoVLA · 开源研究项目</div><h1>{html.escape(title)}</h1><p class="lead">{html.escape(lead)}</p></div></div>
 <main class="wrap">{content}</main>
 <footer class="footer"><div class="wrap">基于 RIPT-VLA、QueST 与 LIBERO。实验过程、正负结果和适用边界均在页面中呈现。</div></footer>
 </body>

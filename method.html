@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">自进化 VLA</a><a href="index.html" class="">概览</a><a href="method.html" class="active">方法</a><a href="results.html" class="">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
-<div class="hero"><div class="wrap"><div class="kicker">VLA-LoopLab · 开源研究项目</div><h1>方法：强化后训练与结果价值引导</h1><p class="lead">先解释为什么这样设计，再判断模块是否有效。官方 RIPT 基础与本项目扩展在页面中明确区分。</p></div></div>
+<header class="topbar"><nav class="nav" aria-label="页面导航"><a class="brand" href="index.html">SelfEvoVLA</a><a href="index.html" class="">概览</a><a href="method.html" class="active">方法</a><a href="results.html" class="">实验结果</a><a href="demo.html" class="">视频演示</a><a href="data.html" class="">实验数据</a></nav></header>
+<div class="hero"><div class="wrap"><div class="kicker">SelfEvoVLA · 开源研究项目</div><h1>方法：强化后训练与结果价值引导</h1><p class="lead">先解释为什么这样设计，再判断模块是否有效。官方 RIPT 基础与本项目扩展在页面中明确区分。</p></div></div>
 <main class="wrap">
 <section><div class="section-head"><div class="kicker">01 · 官方基础</div><h2>RIPT：用组内相对表现更新 VLA 策略</h2><p>同一初始状态采样 K 条轨迹，使用留一法估计优势，不需要额外价值网络。全成功或全失败组的相对优势为零，因此需要在采样阶段识别并处理。</p></div>
 <figure class="figure"><img src="assets/method_pipeline.png" alt="SFT、并行 rollout、组内优势、有界采样、PPO 与评估流程"></figure></section>
