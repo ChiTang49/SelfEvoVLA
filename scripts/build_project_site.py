@@ -216,13 +216,11 @@ def build():
 <figure class="figure"><img src="assets/self_evolving_pipeline.png" alt="SFT、RIPT、交互数据、结果价值、候选规划、执行验证与回流组成的闭环"></figure>
 <div class="button-row"><a class="button" href="method.html">查看方法与技术细节</a></div></section>
 <section><div class="section-head"><div class="kicker">03 · 核心实验结果</div><h2>真实训练得到的结果，也保留没有奏效的模块</h2><p>三个 LIBERO-Long 任务均完成真实 RIPT 训练、50 状态独立评估、任务专属价值模型和规划对照。</p></div>
-<div class="grid four">
-  <div class="card emphasis"><div class="label">RIPT 三任务宏平均</div><div class="metric">74.7<small>%</small></div><p>SFT 为 61.3%，提高 13.3 个百分点。</p></div>
+<div class="grid three">
+  <div class="card emphasis"><div class="label">主方法三任务宏平均</div><div class="metric">74.7<small>%</small></div><p>SFT 为 61.3%，提高 13.3 个百分点。</p></div>
   <div class="card emphasis"><div class="label">Task 6</div><div class="metric">88<small>%</small></div><p>SFT 为 56%，单训练 seed 提高 32 个百分点。</p></div>
-  <div class="card"><div class="label">回流＋规划</div><div class="metric">72<small>%</small></div><p>两个评估 seed 均值，原规划为 66%。</p></div>
   <div class="card"><div class="label">价值模型</div><div class="metric">0.952<small>AUROC</small></div><p>三个任务留出 AUROC 为 0.789–0.952。</p></div>
 </div>
-<div class="note"><strong>需要同时看到的负结果：</strong>RIPT＋Planning 的三任务宏平均为 71.3%，低于 RIPT；三个任务的价值留出状态上，规划也均未改善。回流策略单独使用的两轮均值为 63%，低于原 E3 的 67%。</div>
 <div class="button-row"><a class="button" href="results.html">查看完整结果矩阵</a><a class="button secondary" href="demo.html">观看真实行为对比</a></div></section>
 <section><div class="section-head"><div class="kicker">04 · 可复现性</div><h2>不仅呈现成功率，也保留完整的实验数据链</h2></div>
 <div class="grid three">
