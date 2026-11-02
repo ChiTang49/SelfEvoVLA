@@ -7,6 +7,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
+plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "Noto Sans CJK SC", "SimHei", "DejaVu Sans"]
+plt.rcParams["axes.unicode_minus"] = False
+
 
 EXPERIMENTS = [
     ("sft", 1, "E9-sft-k1"),
@@ -43,7 +46,7 @@ def main():
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
     width = 0.35
     x = np.arange(3)
-    for policy_index, (policy, label, color) in enumerate((("sft", "SFT", "#64748b"), ("e3", "Bounded RIPT", "#2563eb"))):
+    for policy_index, (policy, label, color) in enumerate((("sft", "SFT", "#64748b"), ("e3", "主方法", "#2563eb"))):
         records = [experiments[experiment] for p, _, experiment in EXPERIMENTS if p == policy]
         overall = [record["overall"]["success_rate"] for record in records]
         heldout = [record["state_strata"]["value_heldout_states_40_49"]["success_rate"] for record in records]

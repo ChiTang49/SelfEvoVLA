@@ -7,6 +7,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
+plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "Noto Sans CJK SC", "SimHei", "DejaVu Sans"]
+plt.rcParams["axes.unicode_minus"] = False
+
 
 TASKS = {
     "Main": {
@@ -64,7 +67,8 @@ def main():
     for axis, key, title in zip(axes[:2], ("overall", "heldout"), ("All 50 states", "10 value-heldout states")):
         for index, method in enumerate(METHODS):
             values = [summary["tasks"][task]["methods"][method][key]["success_rate"] for task in TASKS]
-            axis.bar(x + (index - 1.5) * width, values, width, label=method, color=colors[index])
+            label = {"RIPT": "主方法", "SFT+Plan": "SFT＋规划", "RIPT+Plan": "主方法＋规划"}.get(method, method)
+            axis.bar(x + (index - 1.5) * width, values, width, label=label, color=colors[index])
         axis.set_xticks(x, list(TASKS))
         axis.set_ylim(0, 1.02)
         axis.set_ylabel("Success rate")

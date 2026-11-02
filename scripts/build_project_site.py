@@ -176,7 +176,7 @@ TASK_LABELS = {"Main": "主任务", "Task 5": "任务 5", "Task 6": "任务 6"}
 
 
 def result_table(data, key):
-    labels = {"SFT": "SFT", "RIPT": "有界 RIPT", "SFT+Plan": "SFT＋规划", "RIPT+Plan": "RIPT＋规划"}
+    labels = {"SFT": "SFT", "RIPT": "主方法", "SFT+Plan": "SFT＋规划", "RIPT+Plan": "主方法＋规划"}
     rows = ['<div class="table-wrap"><table><thead><tr><th>任务</th>' + "".join(f"<th>{labels[method]}</th>" for method in labels) + "</tr></thead><tbody>"]
     for task, payload in data["tasks"].items():
         rows.append(f"<tr><td>{TASK_LABELS.get(task, task)}</td>")
