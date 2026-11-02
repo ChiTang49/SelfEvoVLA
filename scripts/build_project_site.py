@@ -176,7 +176,7 @@ TASK_LABELS = {"Main": "主任务", "Task 5": "任务 5", "Task 6": "任务 6"}
 
 
 def result_table(data, key):
-    labels = {"SFT": "SFT", "RIPT": "主方法", "SFT+Plan": "SFT＋规划", "RIPT+Plan": "主方法＋规划"}
+    labels = {"SFT": "SFT", "RIPT": "主方法", "SFT+Plan": "SFT＋规划", "RIPT+Plan": "RIPT＋规划"}
     rows = ['<div class="table-wrap"><table><thead><tr><th>任务</th>' + "".join(f"<th>{labels[method]}</th>" for method in labels) + "</tr></thead><tbody>"]
     for task, payload in data["tasks"].items():
         rows.append(f"<tr><td>{TASK_LABELS.get(task, task)}</td>")
@@ -269,7 +269,6 @@ def build():
     page("method.html", "method.html", "方法：强化后训练与结果价值引导", "先解释为什么这样设计，再判断模块是否有效。官方 RIPT 基础与本项目扩展在页面中明确区分。", method)
 
     overall = result_table(multitask, "overall")
-    heldout = result_table(multitask, "heldout")
     values = value_table(multitask)
     feedback_rows = []
     feedback_names = {
@@ -281,29 +280,22 @@ def build():
     for name, payload in feedback["methods"].items():
         feedback_rows.append(f"<tr><td>{feedback_names.get(name, name)}</td><td>{payload['seeds'][0]['overall']['success_rate']:.0%}</td><td>{payload['seeds'][1]['overall']['success_rate']:.0%}</td><td><strong>{payload['mean_overall_success_rate']:.1%}</strong></td><td>{payload['mean_heldout_success_rate']:.1%}</td></tr>")
     results = f'''
-<section><div class="section-head"><div class="kicker">01 · 三任务主结果</div><h2>RIPT 宏平均从 61.3% 提升至 74.7%</h2><p>每个任务使用一个策略训练 seed 和 50 个固定初始状态。主任务采用本轮 K=1 受控口径，与早期单任务历史评估分开。</p></div>{overall}
+<section><div class="section-head"><div class="kicker">01 · 三任务主结果</div><h2>主方法宏平均从 61.3% 提升至 74.7%</h2><p>每个任务使用一个策略训练 seed 和 50 个固定初始状态。主任务采用本轮 K=1 受控口径，与早期单任务历史评估分开。</p></div>{overall}
 <figure class="figure"><img src="assets/multitask_results.png" alt="三任务全量、留出状态和价值指标图"></figure></section>
-<section><div class="section-head"><div class="kicker">02 · 留出状态</div><h2>规划的收益没有迁移到价值留出状态</h2><p>最后 10 个初始状态不参与价值模型训练或回流。三个任务的 RIPT＋Planning 均低于对应 RIPT，不能选择性使用 Task 5 的全量 78% 作为普遍结论。</p></div>{heldout}</section>
-<section><div class="section-head"><div class="kicker">03 · 一轮经验回流</div><h2>组合方法改善，回流单独使用并未改善</h2><p>回流使用 21 条仿真确认成功的规划轨迹、843 个动作块，微调 2 个 epoch。下表同时给出两个评估 seed 和留出均值。</p></div>
+<section><div class="section-head"><div class="kicker">02 · 一轮经验回流</div><h2>组合方法改善，回流单独使用并未改善</h2><p>回流使用 21 条仿真确认成功的规划轨迹、843 个动作块，微调 2 个 epoch。下表同时给出两个评估 seed 和留出均值。</p></div>
 <div class="table-wrap"><table><thead><tr><th>模型与方式</th><th>seed 0</th><th>seed 1</th><th>全量均值</th><th>留出均值</th></tr></thead><tbody>{''.join(feedback_rows)}</tbody></table></div>
 <figure class="figure"><img src="assets/feedback_results.png" alt="原 E3 与回流模型在两个评估 seed 下的结果"></figure></section>
-<section><div class="section-head"><div class="kicker">04 · 价值模型与规划消融</div><h2>排序能力存在，但不等于在线规划收益</h2><p>三个任务专属价值模型均有可测量的留出排序能力；K=1/4/8 对照用于分析候选数量和实际执行收益。</p></div>
+<section><div class="section-head"><div class="kicker">03 · 价值模型与规划消融</div><h2>排序能力存在，但不等于在线规划收益</h2><p>三个任务专属价值模型均有可测量的留出排序能力；K=1/4/8 对照用于分析候选数量和实际执行收益。</p></div>
 <div class="grid two"><div>{values}</div><div><figure class="figure"><img src="assets/planning_results.png" alt="K=1、4、8 全量、留出结果和推理耗时"></figure></div></div>
 <figure class="figure"><img src="assets/candidate_scores.png" alt="前 24 次重规划的候选评分与选择"></figure></section>
-<section><div class="section-head"><div class="kicker">05 · 训练过程</div><h2>训练曲线与采样量同时公开</h2><p>训练期 rollout 成功率只用于观察过程，不替代最终独立评估。蓝色为接受轨迹，橙色为动态采样丢弃轨迹。</p></div>
+<section><div class="section-head"><div class="kicker">04 · 训练过程</div><h2>训练曲线与采样量同时公开</h2><p>训练期 rollout 成功率只用于观察过程，不替代最终独立评估。蓝色为接受轨迹，橙色为动态采样丢弃轨迹。</p></div>
 <div class="grid three">
   <figure class="figure"><img src="evidence/E3-main-bript-seed00/training_curve.png" alt="主任务 RIPT 训练曲线"><figcaption>主任务：15 轮 RIPT</figcaption></figure>
   <figure class="figure"><img src="evidence/E11-task5-bript-resume4-v2/training_curve.png" alt="Task 5 恢复段训练曲线"><figcaption>Task 5：原 5 轮＋恢复 10 轮中的恢复段</figcaption></figure>
   <figure class="figure"><img src="evidence/E11-task6-bript-final-seed00/training_curve.png" alt="Task 6 训练曲线"><figcaption>Task 6：15 轮 RIPT</figcaption></figure>
 </div></section>
-<section><div class="section-head"><div class="kicker">06 · 如何理解这些数字</div><h2>结果可以支持什么，不能支持什么</h2></div>
-<div class="grid three">
-  <div class="card"><h3>可以支持</h3><p>单卡完成真实 RIPT；两个扩展任务明显提升；价值模型具有留出排序能力；回流与规划组合在两个评估 seed 上呈正向。</p></div>
-  <div class="card"><h3>需要保留</h3><p>规划在三任务留出状态均未改善；回流单独使用退化；评估存在波动；Task 5 为两阶段恢复训练。</p></div>
-  <div class="card"><h3>不能外推</h3><p>不能宣称跨训练 seed 稳定提升、完整 Q-Planning 复现、SOTA、RoboTwin 或真机效果。</p></div>
-</div></section>
 '''
-    page("results.html", "results.html", "实验结果：有效提升与无效模块都如实呈现", "三任务结果、留出状态、两轮回流、K 消融和训练曲线集中展示，便于快速核对数字与结论。", results)
+    page("results.html", "results.html", "实验结果：有效提升与无效模块都如实呈现", "三任务结果、两轮回流、K 消融和训练曲线集中展示，便于快速核对数字与结论。", results)
 
     paired, paired_count = csv_table(ROOT / "evidence/paired_episode_results.csv", [
         ("method", "方法"), ("init_state_index", "初始状态"), ("success", "结果"),

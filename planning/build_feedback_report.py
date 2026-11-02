@@ -62,7 +62,7 @@ def main():
         axis.scatter(x, means, marker="D", color="#111827", s=45, label="Two-seed mean", zorder=3)
         for index, mean in enumerate(means):
             axis.text(index, mean + 0.025, f"{mean:.0%}", ha="center", fontsize=10)
-        axis.set_xticks(x, ["主方法\nK=1", "回流\nK=1", "主方法＋规划\nK=4", "回流＋规划\nK=4"])
+        axis.set_xticks(x, ["主方法\nK=1", "回流\nK=1", "RIPT＋规划\nK=4", "回流＋规划\nK=4"])
         axis.set_ylim(0, 1.02)
         axis.set_ylabel("Success rate")
         axis.set_title(title)
